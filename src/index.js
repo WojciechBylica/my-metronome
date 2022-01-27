@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Normalize } from 'styled-normalize';
+import { GlobalStyle } from './GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
 
 ReactDOM.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
+    <Normalize />
+    <GlobalStyle />
     <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
