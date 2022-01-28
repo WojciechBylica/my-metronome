@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-metronom/static/css/main.e6c13ad2.css",
+    "main.js": "/my-metronom/static/js/main.fb25b8bb.js",
+    "static/js/787.2f1a0d52.chunk.js": "/my-metronom/static/js/787.2f1a0d52.chunk.js",
+    "static/media/click2.mp3": "/my-metronom/static/media/click2.5f19e7a347893d98e836.mp3",
+    "index.html": "/my-metronom/index.html",
+    "main.e6c13ad2.css.map": "/my-metronom/static/css/main.e6c13ad2.css.map",
+    "main.fb25b8bb.js.map": "/my-metronom/static/js/main.fb25b8bb.js.map",
+    "787.2f1a0d52.chunk.js.map": "/my-metronom/static/js/787.2f1a0d52.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.fb25b8bb.js"
+  ]
+}
