@@ -2,7 +2,7 @@
   "name": "my-metronome",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wojciechbylica.github.io/my-metronom/",
+  "homepage": "https://wojciechbylica.github.io/my-metronome/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
