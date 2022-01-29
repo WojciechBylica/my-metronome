@@ -47,7 +47,7 @@ function App() {
         <button onClick={SwitchOnOrOff}>{!playSound ? 'Play' : 'Stop'}</button>
       </main>
       <footer>
-        <p>Designed by Wojciech Bylica Arts</p>
+        <p>Wojciech Bylica Arts ®</p>
       </footer>
     </>
   );
