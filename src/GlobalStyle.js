@@ -13,6 +13,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-family: "Montserrat", sans-serif;
     margin: 0 auto;
     max-width: 900px;
