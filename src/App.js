@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
-import click2 from './click2.mp3';
+import { useEffect, useState } from 'react';
+import { clickSamples } from './clicks/click-samples';
 
 function App() {
   const [playSound, setPlaySound] = useState(false);
-  const [bpm, setBpm] = useState(120);
-  const audio = new Audio(click2);
-  let tempo = 60000 / bpm;
-  const intervalId = useRef();
+  const [bpm, setBpm] = useState(200);
+  // console.log(clickSamples);
 
+  const audioFile = clickSamples.find((click) => click.bpm === bpm);
+  // console.log(audioFile?.file);
+  const audio = new Audio(`./clicks/${audioFile?.file}`);
+
+  // console.log(audio);
   const handleTempoChange = (event) => {
     setBpm(+event.target.value);
   };
@@ -18,12 +21,13 @@ function App() {
 
   useEffect(() => {
     if (!playSound) {
-      clearInterval(intervalId.current);
     } else {
-      intervalId.current = setInterval(() => {
+      if (bpm === 100 || bpm === 174 || bpm === 200) {
         audio.play();
-      }, tempo);
-      audio.play();
+        audio.loop = true;
+      } else {
+        console.log('bam');
+      }
     }
   }, [playSound]);
 
@@ -33,7 +37,7 @@ function App() {
         <h1>myMetronome</h1>
       </header>
       <main>
-        <h2>tempo (BPM)</h2>
+        <h2>działające tempa testowe 100,174,200 bpm</h2>
         <input
           style={{ width: '48px' }}
           type="number"
@@ -44,7 +48,12 @@ function App() {
           onChange={handleTempoChange}
           required
         />
-        <button onClick={SwitchOnOrOff}>{!playSound ? 'Play' : 'Stop'}</button>
+        <button onClick={SwitchOnOrOff} disabled={playSound}>
+          Play
+        </button>
+        <button onClick={() => window.location.reload()} disabled={!playSound}>
+          stop
+        </button>
       </main>
       <footer>
         <p>Wojciech Bylica Arts ®</p>
