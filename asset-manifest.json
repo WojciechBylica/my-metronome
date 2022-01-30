@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/my-metronome/static/css/main.e6c13ad2.css",
-    "main.js": "/my-metronome/static/js/main.302f2809.js",
+    "main.js": "/my-metronome/static/js/main.c80e49cf.js",
     "static/js/787.2f1a0d52.chunk.js": "/my-metronome/static/js/787.2f1a0d52.chunk.js",
+    "static/media/click1000ms.mp3": "/my-metronome/static/media/click1000ms.61cbf208a976d1f962eb.mp3",
     "index.html": "/my-metronome/index.html",
     "main.e6c13ad2.css.map": "/my-metronome/static/css/main.e6c13ad2.css.map",
-    "main.302f2809.js.map": "/my-metronome/static/js/main.302f2809.js.map",
+    "main.c80e49cf.js.map": "/my-metronome/static/js/main.c80e49cf.js.map",
     "787.2f1a0d52.chunk.js.map": "/my-metronome/static/js/787.2f1a0d52.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.302f2809.js"
+    "static/js/main.c80e49cf.js"
   ]
 }
