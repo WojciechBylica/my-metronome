@@ -1,34 +1,42 @@
 import { useEffect, useState } from 'react';
-import { clickSamples } from './clicks/click-samples';
+import clickSample from './clicks/click1000ms.mp3';
 
 function App() {
   const [playSound, setPlaySound] = useState(false);
-  const [bpm, setBpm] = useState(200);
-  // console.log(clickSamples);
+  const [bpmInput, setBpmInput] = useState(120);
+  const [bpm, setBpm] = useState(bpmInput);
+  const [tempo, setTempo] = useState(0.54);
 
-  const audioFile = clickSamples.find((click) => click.bpm === bpm);
-  // console.log(audioFile?.file);
-  const audio = new Audio(`./clicks/${audioFile?.file}`);
+  const audio = new Audio(clickSample);
 
-  // console.log(audio);
+  audio.addEventListener('loadedmetadata', () => {
+    setTempo(audio.duration - 60000 / bpm / 1000 + (audio.duration - 1));
+  });
+
   const handleTempoChange = (event) => {
-    setBpm(+event.target.value);
+    setBpmInput(+event.target.value);
+    if (event.target.value >= 40) {
+      return setBpm(+event.target.value);
+    }
   };
 
-  const SwitchOnOrOff = () => {
+  const SwitchOnOrOff = (event) => {
+    event.preventDefault();
     setPlaySound(!playSound);
   };
 
+  const repeatSound = () => {
+    audio.currentTime = tempo;
+    // console.log('w funkcji', audio.currentTime);
+    audio.play();
+  };
+
   useEffect(() => {
-    if (!playSound) {
-    } else {
-      if (bpm === 100 || bpm === 174 || bpm === 200) {
-        audio.play();
-        audio.loop = true;
-      } else {
-        console.log('bam');
-      }
-    }
+    audio.currentTime = 0.9;
+    playSound ? audio.play() : audio.pause();
+
+    audio.addEventListener('ended', repeatSound);
+    return () => audio.removeEventListener('ended', repeatSound);
   }, [playSound]);
 
   return (
@@ -37,23 +45,21 @@ function App() {
         <h1>myMetronome</h1>
       </header>
       <main>
-        <h2>działające tempa testowe 100,174,200 bpm</h2>
-        <input
-          style={{ width: '48px' }}
-          type="number"
-          step="1"
-          min="30"
-          max="250"
-          value={bpm}
-          onChange={handleTempoChange}
-          required
-        />
-        <button onClick={SwitchOnOrOff} disabled={playSound}>
-          Play
-        </button>
-        <button onClick={() => window.location.reload()} disabled={!playSound}>
-          stop
-        </button>
+        <form onSubmit={SwitchOnOrOff}>
+          <label>
+            <input
+              style={{ width: '48px' }}
+              type="number"
+              step="1"
+              min="40"
+              max="250"
+              value={bpmInput}
+              onChange={handleTempoChange}
+              required
+            />
+          </label>
+          <button>{!playSound ? 'Play' : 'Stop'}</button>
+        </form>
       </main>
       <footer>
         <p>Wojciech Bylica Arts ®</p>
